@@ -42,6 +42,8 @@ app = Flask(__name__)
 @app.route('/', methods=['POST', 'GET'])
 def index():
 	message = ''
+	username = ''
+	password = ''
 	if request.method == 'POST':
 		username = request.form.get('username')
 		password = request.form.get('password')
