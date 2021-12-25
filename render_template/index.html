@@ -1,0 +1,32 @@
+44<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Maskalbase</title>
+</head>
+<body>
+	<div class="input">
+		{% if message %}
+        <p>{{ message }}</p>
+	    {% endif %}
+	    
+	    <form action="" method="post">
+		    <p>
+			    <label for="username">Username</label>
+			    <input type="text" name="username">
+			</p>
+			<p>
+			    <label for="password">Password</label>
+			    <input type="password" name="password">
+			</p>
+			<p>
+			    <input type="submit">
+			</p>
+	    </form>
+	</div>
+	<div class="output">
+		
+	</div>
+</body>
+</html>
