@@ -3,14 +3,18 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css", href="{{ url_for( 'static', filename='main.css') }}">
 	<title>Maskalbase</title>
 </head>
+<header>
+	<div class="main_title">MASKALBASE</div>
+</header>
 <body>
 	<div class="input">
 		{% if message %}
         <p>{{ message }}</p>
 	    {% endif %}
-	    
+
 	    <form action="" method="post">
 		    <p>
 			    <label for="username">Username</label>
@@ -21,12 +25,9 @@
 			    <input type="password" name="password">
 			</p>
 			<p>
-			    <input type="submit">
+			    <input type="submit" class="btn" value="Sign in">
 			</p>
 	    </form>
-	</div>
-	<div class="output">
-		
 	</div>
 </body>
 </html>
