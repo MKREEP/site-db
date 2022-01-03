@@ -13,9 +13,9 @@ print('БД подключена к SQLite успешно.')
 def newTable():
 	try:
 		table = """CREATE TABLE IF NOT EXISTS members (
-				id INT PRIMARY KEY,
+				id INTEGER PRIMARY KEY,
 				NickName TEXT,
-				DiscordTag INT,
+				DiscordTag INTEGER,
 				Rank TEXT,
 				Quests TEXT);"""
 
@@ -42,9 +42,10 @@ def newMember():
 # Удаление участника из проекта
 def removeMember():
 	memberID = input('Введите id из таблицы базы данных>>>')
-	cur.execute("SELECT * FROM members WHERE id=?;", (memberID,))
+	cur.execute("SELECT NickName FROM members WHERE id=?;", (memberID,))
 	userFromID = cur.fetchall()
-	confirm = input('Вы подтверждаете удаление из базы данных', userFromID, '?[y/n] >>>')
+	print('Вы подтверждаете удаление из базы данных пользователя', userFromID, '?[y/n]')
+	confirm = input('>>>')
 
 	if confirm == 'y':
 		cur.execute("DELETE FROM members WHERE id=?;", (memberID,))
