@@ -6,6 +6,8 @@ from sqlite3.dbapi2 import Cursor
 
 
 
+
+
 app = Flask(__name__)
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -16,8 +18,13 @@ def index():
 		username = request.form.get('username')
 		password = request.form.get('password')
 
-	if username == 'mkreep' and password == 'root':
-		return redirect('/mainpage', code=302)
+	conn = sqlite3.connect('logins.db')
+	cur = conn.cursor()
+	print('БД подключена к SQLite успешно.')
+	
+	cur.execute("SELECT * FROM logins_passwodrs WHERE login=?;" (username,))
+	result = cur.fetchall()
+
 	else:
 		message = 'Введите ваш логин и пароль.'
 	return render_template('index.html', message=message)
