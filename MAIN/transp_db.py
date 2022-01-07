@@ -1,5 +1,5 @@
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, TextAreaField
+# -*- coding: utf-8 -*-
+
 from flask import Flask, render_template, request, redirect
 import sqlite3
 from sqlite3.dbapi2 import Cursor
@@ -8,31 +8,45 @@ from sqlite3.dbapi2 import Cursor
 
 
 
+application = Flask(__name__)
 app = Flask(__name__)
-@app.route('/', methods=['POST', 'GET'])
+@application.route('/', methods=['POST', 'GET'])
 def index():
-	message = 'Введите ваш логин и пароль.'
 	username = ''
 	password = ''
 	if request.method == 'POST':
-		username = request.form.get('username')
-		password = request.form.get('password')
+		username = str(request.form.get('username'))
+		password = str(request.form.get('password'))
 
-	conn = sqlite3.connect('logins.db')
-	cur = conn.cursor()
-	print('БД подключена к SQLite успешно.')
-	
-	cur.execute("SELECT * FROM logins_passwodrs WHERE login=?;" (username,))
-	result = cur.fetchall()
+		conn = sqlite3.connect('ProjectMembers.db')
+		cur = conn.cursor()
+		print('БД подключена к SQLite успешно.')
+		
+		result_login = str(cur.execute('SELECT login FROM logins_passwords WHERE login=?;', (username,)).fetchone()[0])
+		result_password = str(cur.execute('SELECT password FROM logins_passwords WHERE login=?;', (username,)).fetchone()[0])
+		if password == result_password:
+			return redirect('mainpage')
+		else:
+			return redirect('error_login')
 
-	else:
-		message = 'Введите ваш логин и пароль.'
-	return render_template('index.html', message=message)
+	return render_template('index.html')
 
-@app.route('/mainpage')
+	# else:
+	# 	message = 'Введите ваш логин и пароль.'
+	# return render_template('index.html', message=message)
+
+@application.route('/mainpage')
 def mainpage():
 	#member_NickName = 
 	return render_template('main.html')
 
+@application.errorhandler(500)
+def error_login(e):
+	return render_template('error500.html')
+
+@application.route('/error_login')
+def login_error():
+	return render_template('login_error.html')
+
 if __name__ == '__main__':
-	app.run()
+	application.run(host='0.0.0.0')
