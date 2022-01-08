@@ -7,9 +7,7 @@ from sqlite3.dbapi2 import Cursor
 
 
 
-
 application = Flask(__name__)
-app = Flask(__name__)
 @application.route('/', methods=['POST', 'GET'])
 def index():
 	username = ''
@@ -47,6 +45,37 @@ def error_login(e):
 @application.route('/error_login')
 def login_error():
 	return render_template('login_error.html')
+
+@application.route('/registration', methods=['POST', 'GET'])
+def reg():
+	member_NickName = ''
+	member_DiscordTag = ''
+	member_EMail = ''
+	member_Discord = ''
+	member_Login = ''
+	member_Password = ''
+
+	if request.method == 'POST':
+		member_NickName = str(request.form.get('member_NickName'))
+		member_DiscordTag = str(request.form.get('member_DiscordTag'))
+		member_EMail = str(request.form.get('member_eMail'))
+		member_Discord = str(request.form.get('member_Discord'))
+		member_Login = str(request.form.get('member_Login'))
+		member_Password = str(request.form.get('member_Password'))
+
+	conn = sqlite3.connect('ProjectMembers.db')
+	cur = conn.cursor()
+	print('БД подключена к SQLite успешно.')
+
+	member_RegData = (member_NickName, member_DiscordTag, member_EMail, member_Discord)
+	cur.execute("INSERT INTO members(NickName, DiscordTag, Email, Discord) VALUES(?, ?, ?, ?);", member_RegData)
+	conn.commit()
+
+	login_RegData = (member_Login, member_Password)
+	cur.execute("INSERT INTO logins_passwords(login, password) VALUES(?, ?);", login_RegData)
+	conn.commit()
+
+	return render_template('reg_page.html')
 
 if __name__ == '__main__':
 	application.run(host='0.0.0.0')

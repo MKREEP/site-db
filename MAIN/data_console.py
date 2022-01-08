@@ -17,6 +17,8 @@ def member_data():
 					id INTEGER PRIMARY KEY,
 					NickName TEXT,
 					DiscordTag INTEGER,
+					Email TEXT,
+					Discord TEXT,
 					Rank TEXT,
 					Quests TEXT);"""
 
