@@ -1,7 +1,126 @@
-body {background-color: #343434; font-family: monospace; color: #fff;}
-.header {color: #fff; font-family: monospace; font-size: 24px;
-	height: 30px; width: 700px; top: 0; right: 0; left: 0; margin: auto;/*центрирование*/}
-.InfoMenu {
-	height: 100px; width: 400px;
-	border: 2px solid; border-radius: 10px;
+body { font-family: "Arial"; background-color: #fff; background: url('main_bg3.jpg') no-repeat; background-size: 100%;}
+header
+{
+	position: fixed; left: 0; top: 0;
+	color: #fff;/*Цвета*/
+	width: 100%; height: 70px;
+	margin-bottom: 10px;
+	background: #353535 url('main_logo.png') no-repeat 5% 50%;
 }
+.mainTitle { text-align: center; width: 500px; margin: auto; position: fixed;}
+
+/*Параметры кнопки логина*/
+.TitleBtnLogin
+{
+	height: 70px; width: 100px;
+	background-color: #232323; color: #fff;
+	border: none; cursor: pointer;
+	tansition: all .3s linear;
+    	-webkit-transition: all .3s linear;
+    	-moz-transition: all .3s linear; 
+}
+.TitleBtnLogin:hover
+{
+	color: #fff;
+	background: #9a9a00;
+	font-size: 20px;
+	tansition: all .3s linear;
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
+}
+
+/*Параметры кнопки регистрации*/
+.TitleBtnRegister
+{
+	height: 70px; width: 100px;
+	background-color: #232323; color: #fff;
+	border: none; cursor: pointer;
+	margin-right: 10px;
+	tansition: all .3s linear;
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
+}
+.TitleBtnRegister:hover
+{
+	color: #fff;
+	background: #9a9a00;
+	font-size: 15px;
+	tansition: all .3s linear;
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
+}
+
+footer { position: fixed; left: 0; bottom: 0; width: 100%; height: 30px;
+color: #fff; background-color: #353535;
+}
+.footerYear2021 {height: 30px; width: 100px; margin: auto;}
+.footerContacts
+{
+	height: 30px; width: 300px; right: 0; bottom: 0;
+	background-color: #232323; color: #fff;
+	border: none; cursor: pointer;
+	margin-right: 10px;
+	tansition: all .3s linear;
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
+}
+.footerContacts:hover
+{
+	color: #fff;
+	background: #9a9a00;
+	font-size: 18px;
+	tansition: all .3s linear;
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
+}
+.close {
+	width: 20px; height: 20px;
+	border: 1px solid;
+	border-radius: 20px; border-color: #fff;
+	cursor: pointer;
+	color: #992020; background-color: #202020;
+	margin: auto;
+}
+
+.main{color: #fff; margin-top: 100px;}
+.projectInfo {
+	color: #000;
+	background: #fff; opacity: 0.8;
+	margin: auto; height: 300px; width: 750px; text-align: center;
+	margin-top: 300px; font-size: 30px; font-weight: bold;
+}
+.footerTitle {height: 30px; width: 60px; margin: auto;}
+.projects
+{
+	color: #000;
+	margin-top: 500;
+}
+
+
+
+#line { float: right; }
+
+#contacts
+{
+	width: 300px; height: 300px;
+	color: #fff; background-color: #202020;
+	margin: auto; margin-top: 300px;
+	text-align: center;
+	border: 2px solid;
+	border-radius: 30px;
+	display: none;
+}
+#contacts:target{display: block;}
+
+
+
+
+/*подвал*/
+/*подвал*/
+/*подвал*/
+
+
+
+/*подвал*/
+/*подвал*/
+/*подвал*/
