@@ -15,18 +15,11 @@ header
 	height: 70px; width: 100px;
 	background-color: #232323; color: #fff;
 	border: none; cursor: pointer;
-	tansition: all .3s linear;
-    	-webkit-transition: all .3s linear;
-    	-moz-transition: all .3s linear; 
 }
 .TitleBtnLogin:hover
 {
-	color: #fff;
-	background: #9a9a00;
-	font-size: 20px;
-	tansition: all .3s linear;
-	-webkit-transition: all .3s linear;
-	-moz-transition: all .3s linear;
+	color: #000;
+	background: #fff;
 }
 
 /*Параметры кнопки регистрации*/
@@ -36,18 +29,11 @@ header
 	background-color: #232323; color: #fff;
 	border: none; cursor: pointer;
 	margin-right: 10px;
-	tansition: all .3s linear;
-	-webkit-transition: all .3s linear;
-	-moz-transition: all .3s linear;
 }
 .TitleBtnRegister:hover
 {
-	color: #fff;
-	background: #9a9a00;
-	font-size: 15px;
-	tansition: all .3s linear;
-	-webkit-transition: all .3s linear;
-	-moz-transition: all .3s linear;
+	color: #000;
+	background: #fff;
 }
 
 footer { position: fixed; left: 0; bottom: 0; width: 100%; height: 30px;

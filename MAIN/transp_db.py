@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 import sqlite3
 from sqlite3.dbapi2 import Cursor
 
@@ -28,6 +28,7 @@ def index():
 		result_login = str(cur.execute('SELECT login FROM logins_passwords WHERE login=?;', (username,)).fetchone()[0])
 		result_password = str(cur.execute('SELECT password FROM logins_passwords WHERE login=?;', (username,)).fetchone()[0])
 		if password == result_password:
+			result_id = str(cur.execute('SELECT id FROM logins_passwords WHERE login=?', (result_login,)).fetchone()[0])
 			return redirect('home')
 		else:
 			return redirect('error_login')
@@ -36,7 +37,8 @@ def index():
 
 @application.route('/home')
 def personal_page():
-	return render_template('personal.html')
+	print('id:', user_id)
+	return render_template('personal.html',id=user_id)
 
 @application.errorhandler(500)
 def error_login(e):
@@ -67,9 +69,9 @@ def reg():
 		cur = conn.cursor()
 		print('БД подключена к SQLite успешно.')
 
-		loginCheck = str(cur.execute('SELECT login FROM logins_passwords WHERE login=?;', (member_Login,)).fetchone()[0])
-		if loginCheck == member_Login:
-			pass
+		# loginCheck = str(cur.execute('SELECT login FROM logins_passwords WHERE login=?;', (member_Login,)).fetchone()[0])
+		# if loginCheck == member_Login:
+		# 	pass
 
 		member_RegData = (member_NickName, member_DiscordTag, member_EMail, member_Discord)
 		cur.execute("INSERT INTO members(NickName, DiscordTag, Email, Discord) VALUES(?, ?, ?, ?);", member_RegData)
